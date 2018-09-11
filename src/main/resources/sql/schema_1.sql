@@ -1,3 +1,6 @@
+ CREATE SCHEMA IF NOT EXISTS db3;|
+ USE db3;|
+
  CREATE TABLE IF NOT EXISTS users(
   id INT NOT NULL,
   name VARCHAR(45) NULL,
@@ -14,4 +17,4 @@
   bookid INT NOT NULL,
   bookname VARCHAR(45) NULL,
   publish VARCHAR(45) NULL,
-  PRIMARY KEY (id));|
+  PRIMARY KEY (bookid));|

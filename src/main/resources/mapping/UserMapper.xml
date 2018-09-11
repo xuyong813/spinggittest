@@ -14,7 +14,7 @@
     <resultMap id="BookResult" type="Book">
         <result property = "id"  column = "bookid"/>
         <result property = "name" column = "bookname"/>
-        <result property = "publish" column = "bookpublish"/>
+        <result property = "publish" column = "publish"/>
     </resultMap>
 
     <resultMap type="User" id="UserResult">
