@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.springboot.joyson.demospringbootmybatis.mapper.UserMapper">
+
+    <resultMap id="InfoResult" type="Information">
+        <result property = "id"  column = "infoid"/>
+        <result property = "country" column = "country"/>
+    </resultMap>
+
+    <resultMap id="BookResult" type="Book">
+        <result property = "id"  column = "bookid"/>
+        <result property = "name" column = "bookname"/>
+        <result property = "publish" column = "bookpublish"/>
+    </resultMap>
+
+    <resultMap type="User" id="UserResult">
+        <result property = "id"  column = "id"/>
+        <result property = "name" column = "name"/>
+        <result property = "password" column = "password"/>
+        <association property="information" resultMap="InfoResult"/>
+        <collection property="bookList" ofType="Book" resultMap="BookResult"/>
+    </resultMap>
+
+
+
+    <select id="findById"  resultMap="UserResult">
+        SELECT * FROM users,information,book where users.id = information.infoid and users.id = #{id}
+    </select>
+
+    <!--<select id="findbygradeid" parameterType="Integer" resultMap="StudentResult">
+        select *from student where gid=#{gid}
+    </select>-->
+
+    <!--<resultMap type="Student" id="StudentResult">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <association property="address" column="addid" select="com.qbd.mapper.AddressMappers.findbyid">
+        </association>
+        <association property="grade" column="gid" select="com.qbd.mapper.GradeMappers.findbyid">
+        </association>
+    </resultMap>-->
+</mapper>
